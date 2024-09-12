@@ -23,4 +23,4 @@ def gen_rec(plant, api):
     "Lighting, Soil, Watering, Fertilizer, Temperature, Humidity: ",
   ])
 
-  return(response.text)
+  return(response.text.replace("**Growing Conditions**", ""))
