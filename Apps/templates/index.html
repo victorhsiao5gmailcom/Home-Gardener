@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Gardener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Home Gardener</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="image">Upload an image of your plant:</label>
+        <input type="file" name="image" id="image" accept="image/*">
+        <button type="submit">Upload</button>
+    </form>
+    {% if success %}
+        <div class="container">
+            <h2>Plant Information</h2>
+            <div class="row">
+                <div class="column">
+                    <h3>Plant Image</h3>
+                    <img src="{{ url_for('static', filename='user_upload_files/' + image_filename) }}" alt="Plant Image" style="max-width: 100%; height: auto;">
+                </div>
+                <div class="column">
+                    <h3>Plant Info</h3>
+                    <p><strong>Species Name:</strong> {{ species_name }}</p>
+                    <p><strong>Common Name:</strong> {{ common_name }}</p>
+                </div>
+            </div>
+            <h3>Growing Condition</h3>
+            <p>{{ growing_condition }}</p>
+            <h3>Disease Management</h3>
+            <p>{{ disease_management }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
